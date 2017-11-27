@@ -419,6 +419,11 @@
             return this.options.ignore_dragging(event);
         }
 
+        // allow text selection when resize is enabled
+        if (this.options.resize) {
+            return !$(event.target).is(this.options.items);
+        }
+
         return $(event.target).is(this.options.ignore_dragging.join(', '));
     };
 

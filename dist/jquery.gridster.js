@@ -1,6 +1,6 @@
-/*! gridster.js - v0.5.6 - 2014-09-25
+/*! gridster.js - v0.5.6 - 2017-11-27
 * http://gridster.net/
-* Copyright (c) 2014 ducksboard; Licensed MIT */
+* Copyright (c) 2017 ducksboard; Licensed MIT */
 
 ;(function(root, factory) {
 
@@ -839,6 +839,11 @@
 
         if ($.isFunction(this.options.ignore_dragging)) {
             return this.options.ignore_dragging(event);
+        }
+
+        // allow text selection when resize is enabled
+        if (this.options.resize) {
+            return !$(event.target).is(this.options.items);
         }
 
         return $(event.target).is(this.options.ignore_dragging.join(', '));
